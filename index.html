@@ -16,24 +16,40 @@
 
       <main class="content">
         <section class="profile">
-          <img src="./images/avatar.jpg" alt="Bessie Coleman" class="profile__avatar-image" />
+          <img
+            src="./images/avatar.jpg"
+            alt="Bessie Coleman"
+            class="profile__avatar-image"
+          />
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__about">Civil Aviator</p>
-            <button class="profile__edit-btn"><img src="./images/pencil.png" alt="" />Edit Profile</button>
+            <button class="profile__edit-btn">
+              <img src="./images/pencil.png" alt="" />Edit Profile
+            </button>
           </div>
-          <button type="button" class="profile__add-btn"><img src="./images/add-icon.png" alt="" />New Post</button>
+          <button type="button" class="profile__add-btn">
+            <img src="./images/add-icon.png" alt="" />New Post
+          </button>
         </section>
 
         <section class="cards page__section">
           <ul class="cards__list">
             <template id="card-template">
               <li class="card">
-                <button type="button" class="card__delete-btn" aria-label="Delete card"></button>
+                <button
+                  type="button"
+                  class="card__delete-button"
+                  aria-label="Delete card"
+                ></button>
                 <img src="#" alt="" class="card__image" />
                 <div class="card__textbox">
                   <h2 class="card__text"></h2>
-                  <button type="button" class="card__btn-like" aria-label="Like"></button>
+                  <button
+                    type="button"
+                    class="card__like-button"
+                    aria-label="Like"
+                  ></button>
                 </div>
               </li>
             </template>
@@ -52,15 +68,29 @@
           <form class="modal__form">
             <label for="profile-name-input" class="modal__label">
               Name
-              <input id="profile-name-input" type="text" class="modal__input" placeholder="Type your name" required />
+              <input
+                id="profile-name-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your name"
+                required
+              />
             </label>
 
             <label for="profile-description-input" class="modal__label">
               Description
-              <input id="profile-description-input" type="text" class="modal__input" placeholder="Description" required />
+              <input
+                id="profile-description-input"
+                type="text"
+                class="modal__input"
+                placeholder="Description"
+                required
+              />
             </label>
 
-            <button type="submit" class="modal__submit-btn" disabled>Save</button>
+            <button type="submit" class="modal__submit-btn" disabled>
+              Save
+            </button>
           </form>
         </div>
       </div>
@@ -74,15 +104,29 @@
           <form class="modal__form">
             <label for="post-title-input" class="modal__label">
               Title
-              <input id="post-title-input" type="text" class="modal__input modal__input_type_title" placeholder="Title" required />
+              <input
+                id="post-title-input"
+                type="text"
+                class="modal__input modal__input_type_title"
+                placeholder="Title"
+                required
+              />
             </label>
 
             <label for="post-link-input" class="modal__label">
               Image link
-              <input id="post-link-input" type="url" class="modal__input modal__input_type_link" placeholder="https://…" required />
+              <input
+                id="post-link-input"
+                type="url"
+                class="modal__input modal__input_type_link"
+                placeholder="https://…"
+                required
+              />
             </label>
 
-            <button type="submit" class="modal__submit-btn" disabled>Save</button>
+            <button type="submit" class="modal__submit-btn" disabled>
+              Save
+            </button>
           </form>
         </div>
       </div>

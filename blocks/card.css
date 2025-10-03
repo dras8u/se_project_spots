@@ -1,53 +1,108 @@
 .card {
-  list-style: none;
-  width: 100%;
+  position: relative;
 }
 
 .card__image {
-  display: block;
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
+  height: 413px;
   width: 100%;
-  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
 }
 
 .card__textbox {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 12px;
+  justify-content: space-between;
 }
 
 .card__text {
-  margin: 0;
-  font-size: 20px;
   font-weight: 500;
-  max-width: 353px;
-  overflow: hidden;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
+  max-width: 353px;
 }
 
 .card__btn-like {
-  height: 20px;
+  background-image: url(../images/like_icon_dark.png);
   width: 23px;
-  background-image: url("../images/like_icon_dark.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: transparent;
+  height: 20px;
+  margin-top: 12px;
+  padding: 0;
+  opacity: 40%;
   border: none;
-  outline: none;
-  transition: opacity 0.25s ease-in-out;
-  cursor: pointer;
-  opacity: 0.4;
+  background-color: transparent;
+  transition: 0.05s;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.card:last-child {
+  margin-bottom: 40px;
 }
 
 .card__btn-like:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 460px) {
+.card__delete-button {
+  background-image: url(../images/trash.svg);
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: opacity 0.2s;
+}
+
+.card__delete-button:hover {
+  background-image: url(../images/trash_hover.svg);
+}
+
+.card__like-button {
+  background-image: url(../images/like_icon_dark.png);
+  width: 23px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.card__like-button:hover {
+  opacity: 1;
+}
+
+.card__like-button_liked {
+  background-image: url(../images/like_icon_red.svg);
+  opacity: 1;
+}
+
+@media screen and (max-width: 627px) {
+  .card__image {
+    height: 288px;
+  }
+
   .card__text {
+    width: 90%;
     font-size: 16px;
+    line-height: 1;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card:last-child {
+    margin-bottom: 20px;
   }
 }

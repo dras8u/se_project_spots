@@ -25,76 +25,97 @@ const initialCards = [
   },
 ];
 
+// Profile
 const editProfileBtn = document.querySelector(".profile__edit-btn");
-const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
-
-const newPostBtn = document.querySelector(".profile__add-btn");
-// supports either id (#new-post-modal or #new-modal-post)
-const newPostModal =
-  document.querySelector("#new-post-modal") ||
-  document.querySelector("#new-modal-post");
-const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
-
-const imagePreviewModal = document.querySelector("#image-preview-modal");
-const imagePreviewCloseBtn =
-  imagePreviewModal.querySelector(".modal__close-btn");
-const previewImg = imagePreviewModal.querySelector(".modal__image");
-const previewCaption = imagePreviewModal.querySelector(".modal__caption");
-
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
 
+// Modals
+const editProfileModal = document.querySelector("#edit-profile-modal");
+const newPostModal = document.querySelector("#new-modal-post");
+const imagePreviewModal = document.querySelector("#image-preview-modal");
+
+// Close buttons
+const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
+const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
+const imagePreviewCloseBtn =
+  imagePreviewModal.querySelector(".modal__close-btn");
+
+// Preview elements
+const previewImg = imagePreviewModal.querySelector(".modal__image");
+const previewCaption = imagePreviewModal.querySelector(".modal__caption");
+
+// Forms & inputs
 const editForm = editProfileModal.querySelector(".modal__form");
 const nameInput = editProfileModal.querySelector("#profile-name-input");
 const aboutInput = editProfileModal.querySelector("#profile-description-input");
 const editSubmit = editProfileModal.querySelector(".modal__submit-btn");
 
+const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostForm = newPostModal.querySelector(".modal__form");
 const newPostSubmit = newPostModal.querySelector(".modal__submit-btn");
+const newFormTitleInput = newPostForm.querySelector("#post-title-input");
+const newFormImageInput = newPostForm.querySelector("#post-link-input");
 
-const newFormTitleInput =
-  newPostForm.querySelector(".modal__input_type_title") ||
-  newPostForm.querySelector("#post-title-input") ||
-  newPostForm.querySelector('input[name="name"]');
-
-const newFormImageInput =
-  newPostForm.querySelector(".modal__input_type_link") ||
-  newPostForm.querySelector(".modal__input_type_image") ||
-  newPostForm.querySelector("#post-link-input") ||
-  newPostForm.querySelector('input[name="link"]');
-
+// Cards
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 const cardsList = document.querySelector(".cards__list");
 
+// Modal functions
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-}
-function closeModal(modal) {
-  modal.classList.remove("modal_is-opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
+}
+
+// Esc close
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) closeModal(openedModal);
+  }
+}
+
+// Overlay click close
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      closeModal(modal);
+    }
+  });
+});
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const titleEl = cardElement.querySelector(".card__text");
   const imgEl = cardElement.querySelector(".card__image");
-  const likeBtn = cardElement.querySelector(".card__btn-like");
-  const deleteBtn = cardElement.querySelector(".card__delete-btn");
+  const likeBtn = cardElement.querySelector(".card__like-button");
+  const deleteBtn = cardElement.querySelector(".card__delete-button");
 
+  titleEl.textContent = data.name;
   imgEl.src = data.link;
   imgEl.alt = data.name;
-  titleEl.textContent = data.name;
 
+  // like
   likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__btn-like_active");
+    likeBtn.classList.toggle("card__like-button_liked");
+    likeBtn.setAttribute(
+      "aria-pressed",
+      likeBtn.classList.contains("card__like-button_liked")
+    );
   });
 
+  // delete
   deleteBtn.addEventListener("click", () => {
     cardElement.remove();
   });
 
+  // preview
   imgEl.addEventListener("click", () => {
     previewImg.src = data.link;
     previewImg.alt = data.name;
@@ -105,6 +126,7 @@ function getCardElement(data) {
   return cardElement;
 }
 
+// Events
 editProfileBtn.addEventListener("click", () => {
   nameInput.value = profileName.textContent.trim();
   aboutInput.value = profileAbout.textContent.trim();
@@ -135,8 +157,10 @@ editForm.addEventListener("submit", (e) => {
 
 newPostForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const data = { name: newFormTitleInput.value, link: newFormImageInput.value };
-  const card = getCardElement(data);
+  const card = getCardElement({
+    name: newFormTitleInput.value,
+    link: newFormImageInput.value,
+  });
   cardsList.prepend(card);
   closeModal(newPostModal);
   newPostForm.reset();
@@ -150,6 +174,7 @@ newPostForm.addEventListener("input", () => {
   newPostSubmit.disabled = !newPostForm.checkValidity();
 });
 
+// Load initial cards
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);

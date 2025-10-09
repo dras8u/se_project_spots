@@ -136,6 +136,7 @@
     margin: 0;
     max-width: 288px;
     width: 100%;
+    border: none;
   }
 
   .profile__edit-btn {

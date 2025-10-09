@@ -10,6 +10,10 @@
   border-radius: 10px;
 }
 
+.card__image:hover {
+  cursor: pointer;
+}
+
 .card__textbox {
   display: flex;
   align-items: center;
@@ -87,6 +91,7 @@
 .card__like-button_liked {
   background-image: url(../images/like_icon_red.svg);
   opacity: 1;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 627px) {

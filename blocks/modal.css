@@ -95,19 +95,24 @@
 
 .modal__close-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: -48px; 
   width: 34px;
   height: 34px;
+  background: transparent;   
   border: none;
-  background: transparent;
   cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.2s;
+  color: #fff;             
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .modal__close-btn:hover {
   opacity: 1;
+  transform: translateY(-1px);
 }
 
 /* ---------- Preview Modal ---------- */

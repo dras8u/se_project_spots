@@ -151,7 +151,6 @@ editForm.addEventListener("submit", (e) => {
   profileName.textContent = nameInput.value;
   profileAbout.textContent = aboutInput.value;
   closeModal(editProfileModal);
-  editForm.reset();
   editSubmit.disabled = true;
 });
 
@@ -174,7 +173,7 @@ newPostForm.addEventListener("input", () => {
   newPostSubmit.disabled = !newPostForm.checkValidity();
 });
 
-// Load initial cards
+
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);

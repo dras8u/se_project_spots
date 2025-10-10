@@ -95,14 +95,14 @@
 
 .modal__close-btn {
   position: absolute;
-  top: 0;
-  right: -48px; 
+  top: 20px;
+  right: 20px;
   width: 34px;
   height: 34px;
-  background: transparent;   
+  background: transparent;
   border: none;
   cursor: pointer;
-  color: #fff;             
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,20 +110,22 @@
   transition: opacity 0.2s, transform 0.2s;
 }
 
-.modal__close-btn:hover {
-  opacity: 1;
-  transform: translateY(-1px);
+.modal__close-btn_type_preview {
+  top: 0;
+  right: -48px;
 }
 
 /* ---------- Preview Modal ---------- */
 .modal__container_type_image {
   background: transparent;
   padding: 0;
-  max-width: fit-content;
+  width: 100%;
+  max-width: 288px;
 }
 
 .modal__image {
-  max-width: 80vw;
+  width: 100%;
+  height: auto;
   max-height: 80vh;
   object-fit: contain;
   border-radius: 8px;
@@ -152,3 +154,21 @@
     width: 100%;
   }
 }
+
+
+@media screen and (max-width: 320px) {
+  .modal__container_type_image {
+    width: 100%;
+    max-width: 627px; 
+    padding: 0;
+    background: transparent;
+  }
+
+  .modal__image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+}
+

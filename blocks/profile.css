@@ -9,7 +9,7 @@
   height: 190px;
   width: 190px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 8px;
 }
 
 .profile__column {
@@ -19,8 +19,8 @@
 
 .profile__name {
   margin: 0 0 12px;
-  color: #212121;
   font-weight: 500;
+  color: #212121;
   font-size: 32px;
   line-height: 1;
   text-overflow: ellipsis;

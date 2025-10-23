@@ -110,6 +110,11 @@
   transition: opacity 0.2s, transform 0.2s;
 }
 
+
+.modal__close-btn:hover {
+  opacity: 1;
+}
+
 .modal__close-btn_type_preview {
   position: absolute;
   top: 10px;
@@ -117,6 +122,11 @@
   width: 32px;
   height: 32px;
   z-index: 2;
+  opacity: 1;
+}
+
+.modal__close-btn_type_preview:hover {
+  opacity: 0.4;
 }
 
 

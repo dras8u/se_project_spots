@@ -102,7 +102,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,17 +110,15 @@
   transition: opacity 0.2s, transform 0.2s;
 }
 
-
 .modal__close-btn:hover {
   opacity: 1;
 }
-
 .modal__close-btn_type_preview {
   position: absolute;
-  top: 10px;
-  right: -50px;
-  width: 32px;
-  height: 32px;
+  top: 3px;
+  left: 590px;
+  width: 40px;
+  height: 40px;
   z-index: 2;
   opacity: 1;
 }
@@ -128,7 +126,6 @@
 .modal__close-btn_type_preview:hover {
   opacity: 0.4;
 }
-
 
 /* ---------- Preview Modal ---------- */
 .modal__container_type_image {
@@ -155,7 +152,7 @@
   padding: 4px 8px;
   font-size: 20px;
   text-align: left;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0;
 }
 
